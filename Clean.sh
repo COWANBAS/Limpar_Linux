@@ -66,6 +66,10 @@ rm -rf ~/.cache/fontconfig/*
 echo "Removendo pacotes Flatpak não utilizados..."
 flatpak uninstall --unused
 
+# Limpar caches do Dns
+
+sudo systemd-resolve --flush-caches
+
 clear
 
 echo "Limpeza concluída!"
