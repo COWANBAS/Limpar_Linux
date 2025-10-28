@@ -16,7 +16,7 @@ sudo apt-get autoclean
 
 # Limpar logs antigos
 echo "Limpando logs antigos..."
-sudo journalctl --vacuum-time=3d  # Remove logs de sistema com mais de 3 dias
+sudo journalctl --vacuum-time=1d  # Remove logs de sistema com mais de 1 dia
 
 # Limpar arquivos temporários
 echo "Limpando arquivos temporários..."
