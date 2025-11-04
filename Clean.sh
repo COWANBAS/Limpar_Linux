@@ -1,5 +1,9 @@
 #!/bin/bash
 
+# Atualizar repositórios
+echo "Atualizando repositórios..."
+sudo apt update
+
 # Limpar cache de pacotes
 echo "Limpando cache de pacotes..."
 sudo apt-get clean
@@ -16,7 +20,7 @@ sudo apt-get autoclean
 
 # Limpar logs antigos
 echo "Limpando logs antigos..."
-sudo journalctl --vacuum-time=1d  # Remove logs de sistema com mais de 1 dia
+sudo journalctl --vacuum-time=3d  # Remove logs de sistema com mais de 3 dias
 
 # Limpar arquivos temporários
 echo "Limpando arquivos temporários..."
@@ -66,8 +70,33 @@ rm -rf ~/.cache/fontconfig/*
 echo "Removendo pacotes Flatpak não utilizados..."
 flatpak uninstall --unused
 
-# Limpar caches do Dns
-sudo systemd-resolve --flush-caches
+# Limpar logs e caches na pasta home do usuário
+echo "Limpando logs e arquivos de cache da pasta home..."
+rm -rf ~/.local/share/Trash/*        # Limpar itens da lixeira
+rm -rf ~/.cache/*                    # Limpar cache de aplicativos gerais
+rm -rf ~/.local/share/gnome-shell/*  # Limpar cache do GNOME Shell 
+rm -rf ~/.dbus/*                     # Limpar caches do DBus
+
+# Limpar ambientes virtuais Python (se houver)
+echo "Limpeza de ambientes virtuais do Python..."
+find ~ -type d -name "venv" -exec rm -rf {} \;  # Limpa qualquer diretório de ambiente virtuais
+
+# Limpar histórico de comandos do terminal
+echo "Limpando histórico de comandos do terminal..."
+history -c  # Limpa o histórico atual da sessão
+rm -f ~/.bash_history  # Remove o arquivo de histórico do bash
+touch ~/.bash_history  # Cria um novo arquivo de histórico vazio
+
+# Limpar caches e dados do Wine
+echo "Limpando cache e logs do Wine..."
+
+# Limpar cache de aplicativos do Wine
+rm -rf ~/.cache/wine/            # Limpa o cache dos aplicativos executados via Wine
+rm -rf ~/.wine/drive_c/users/$USER/Application\ Data/*  # Limpa cache de dados do Windows
+
+# Limpar logs do Wine (se existirem)
+rm -rf ~/.wine/drive_c/users/$USER/Local\ Settings/Temp/*  # Limpa arquivos temporários do Wine
+rm -rf ~/.wine/drive_c/users/$USER/Local\ Settings/History/*  # Limpa histórico do Wine
 
 clear
 
