@@ -1,9 +1,5 @@
 #!/bin/bash
 
-# Atualizar repositórios
-echo "Atualizando repositórios..."
-sudo apt update
-
 # Limpar cache de pacotes
 echo "Limpando cache de pacotes..."
 sudo apt-get clean
@@ -20,7 +16,7 @@ sudo apt-get autoclean
 
 # Limpar logs antigos
 echo "Limpando logs antigos..."
-sudo journalctl --vacuum-time=3d  # Remove logs de sistema com mais de 3 dias
+sudo journalctl --vacuum-time=1d 
 
 # Limpar arquivos temporários
 echo "Limpando arquivos temporários..."
@@ -31,7 +27,6 @@ sudo rm -rf /var/tmp/*
 echo "Limpando cache de navegadores..."
 rm -rf ~/.cache/google-chrome/*
 rm -rf ~/.cache/mozilla/*
-rm -rf ~/.cache/min/*  # Limpar cache do Min Browser
 
 # Limpar arquivos de "thumbnails"
 echo "Limpando cache de thumbnails..."
@@ -46,8 +41,8 @@ echo "Limpando arquivos de spool e crash reports..."
 sudo rm -rf /var/spool/*
 sudo rm -rf /var/crash/*
 
-# Limpar pacotes órfãos, se houver
-echo "Removendo pacotes órfãos..."
+# Limpar pacotes não utilizados, se houver
+echo "Removendo pacotes não utilizados..."
 sudo deborphan | xargs sudo apt-get -y remove --purge
 
 # Limpar cache do Snapd
@@ -70,33 +65,8 @@ rm -rf ~/.cache/fontconfig/*
 echo "Removendo pacotes Flatpak não utilizados..."
 flatpak uninstall --unused
 
-# Limpar logs e caches na pasta home do usuário
-echo "Limpando logs e arquivos de cache da pasta home..."
-rm -rf ~/.local/share/Trash/*        # Limpar itens da lixeira
-rm -rf ~/.cache/*                    # Limpar cache de aplicativos gerais
-rm -rf ~/.local/share/gnome-shell/*  # Limpar cache do GNOME Shell 
-rm -rf ~/.dbus/*                     # Limpar caches do DBus
-
-# Limpar ambientes virtuais Python (se houver)
-echo "Limpeza de ambientes virtuais do Python..."
-find ~ -type d -name "venv" -exec rm -rf {} \;  # Limpa qualquer diretório de ambiente virtuais
-
-# Limpar histórico de comandos do terminal
-echo "Limpando histórico de comandos do terminal..."
-history -c  # Limpa o histórico atual da sessão
-rm -f ~/.bash_history  # Remove o arquivo de histórico do bash
-touch ~/.bash_history  # Cria um novo arquivo de histórico vazio
-
-# Limpar caches e dados do Wine
-echo "Limpando cache e logs do Wine..."
-
-# Limpar cache de aplicativos do Wine
-rm -rf ~/.cache/wine/            # Limpa o cache dos aplicativos executados via Wine
-rm -rf ~/.wine/drive_c/users/$USER/Application\ Data/*  # Limpa cache de dados do Windows
-
-# Limpar logs do Wine (se existirem)
-rm -rf ~/.wine/drive_c/users/$USER/Local\ Settings/Temp/*  # Limpa arquivos temporários do Wine
-rm -rf ~/.wine/drive_c/users/$USER/Local\ Settings/History/*  # Limpa histórico do Wine
+# Limpar caches do Dns
+sudo systemd-resolve --flush-caches
 
 clear
 
