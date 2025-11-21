@@ -18,6 +18,12 @@ sudo apt-get autoclean
 echo "Limpando logs antigos..."
 sudo journalctl --vacuum-time=1d 
 
+# Limpar logs de pacotes
+echo "Limpando logs do pacote..."
+sudo rm -f /var/log/apt/*.gz
+sudo rm -f /var/log/apt/history.log.?
+sudo rm -f /var/log/apt/term.log.?
+
 # Limpar arquivos temporários
 echo "Limpando arquivos temporários..."
 sudo rm -rf /tmp/*
