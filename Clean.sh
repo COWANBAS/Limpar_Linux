@@ -47,9 +47,9 @@ echo "Limpando arquivos de spool e crash reports..."
 sudo rm -rf /var/spool/*
 sudo rm -rf /var/crash/*
 
-# Limpar pacotes não utilizados, se houver
-echo "Removendo pacotes não utilizados..."
-sudo deborphan | xargs sudo apt-get -y remove --purge
+# Limpar pacotes orfãos, se houver
+echo "Removendo pacotes orfãos..."
+sudo apt-get autoremove --purge -y
 
 # Limpar cache do Snapd
 echo "Limpando cache do Snapd..."
