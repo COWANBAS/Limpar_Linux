@@ -37,6 +37,8 @@ rm -rf ~/.cache/mozilla/*
 # Limpar arquivos de "thumbnails"
 echo "Limpando cache de thumbnails..."
 rm -rf ~/.cache/thumbnails/*
+rm -rf ~/.cache/thumbnails/fail/*
+rm -rf ~/.cache/thumbnails/large/*
 
 # Limpar caches de pacotes snap (se usar Snap)
 echo "Limpando cache do Snap..."
@@ -46,6 +48,12 @@ sudo rm -rf /var/snap/*
 echo "Limpando arquivos de spool e crash reports..."
 sudo rm -rf /var/spool/*
 sudo rm -rf /var/crash/*
+
+# Limpar arquivos temporários do wine
+echo "Limpando arquivos temporário do wine..."
+rm -rf ~/.wine/dosdevices/c:/windows/temp*
+rm -rf ~/.wine/drive_c/users/cowanbas/AppData/Local/Temp*
+rm -rf ~/.wine/drive_c/users/cowanbas/AppData/Roaming/Microsoft/Windows/Recent/*
 
 # Limpar pacotes orfãos, se houver
 echo "Removendo pacotes orfãos..."
