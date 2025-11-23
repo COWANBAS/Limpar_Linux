@@ -52,8 +52,8 @@ sudo rm -rf /var/crash/*
 # Limpar arquivos temporários do wine
 echo "Limpando arquivos temporário do wine..."
 rm -rf ~/.wine/dosdevices/c:/windows/temp*
-rm -rf ~/.wine/drive_c/users/cowanbas/AppData/Local/Temp*
-rm -rf ~/.wine/drive_c/users/cowanbas/AppData/Roaming/Microsoft/Windows/Recent/*
+rm -rf ~/.wine/drive_c/users/*/AppData/Local/Temp*
+rm -rf ~/.wine/drive_c/users/*/AppData/Roaming/Microsoft/Windows/Recent/*
 
 # Limpar pacotes orfãos, se houver
 echo "Removendo pacotes orfãos..."
