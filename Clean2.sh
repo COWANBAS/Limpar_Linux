@@ -21,6 +21,10 @@ sudo apt-get clean
 echo "Limpando logs antigos..."
 sudo journalctl --vacuum-time=1d 
 
+# Limpar relatório de erros
+echo "Limpando relatório de erros..."
+sudo rm -f ~/.xsession-errors*
+
 # Limpando comandos do terminal
 echo "Limpando comandos do terminal..."
 sudo rm -rf ~/.bash_history
