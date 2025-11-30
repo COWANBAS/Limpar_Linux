@@ -22,6 +22,10 @@ sudo journalctl --vacuum-time=1d
 echo "Limpando comandos do terminal..."
 sudo rm -rf ~/.bash_history
 
+# Limpar relatório de erros
+echo "Limpando relatório de erros..."
+sudo rm -f ~/.xsession-errors*
+
 # Limpar logs de pacotes
 echo "Limpando logs do pacote..."
 sudo rm -f /var/log/apt/*.gz
@@ -33,7 +37,7 @@ echo "Limpando arquivos temporários..."
 sudo rm -rf /tmp/*
 sudo rm -rf /var/tmp/*
 
-# Limpar cache de navegadores (se aplicável)
+# Limpar cache de navegadores
 echo "Limpando cache de navegadores..."
 rm -rf ~/.cache/google-chrome/*
 rm -rf ~/.cache/mozilla/*
