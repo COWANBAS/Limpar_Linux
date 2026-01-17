@@ -1,4 +1,4 @@
-Um simples script para quem não quer ficar utilizando o terminal o tempo todo no linux.
+Um simples script para quem não quer ficar utilizando o terminal o para limpar o linux.
 
 # O que o script faz
 
