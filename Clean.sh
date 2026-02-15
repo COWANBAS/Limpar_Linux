@@ -75,7 +75,8 @@ echo "Limpando caches de fontes e arquivos temporários..."
 sudo rm -rf ~/.cache/fontconfig/*
 
 # Limpar caches do Dns
-sudo systemd-resolve --flush-caches
+sudo resolvectl flush-caches
+sudo systemctl restart systemd-resolved
 
 # Limpar cache do pip
 echo "Limpando caches do pip..."
