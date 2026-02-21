@@ -82,6 +82,10 @@ sudo systemctl restart systemd-resolved
 echo "Limpando caches do pip..."
 sudo pip3 cache purge
 
+# Adiciona novamente os pacotes multiverse e universe
+sudo add-apt-repository universe
+sudo add-apt-repository multiverse
+
 clear
 
 echo "Limpeza concluída!"
