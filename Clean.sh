@@ -76,8 +76,8 @@ sudo rm -rf ~/.cache/fontconfig/*
 
 # Limpar caches do Dns
 echo "Limpando caches do dns..."
-sudo resolvectl flush-caches
 sudo systemctl restart systemd-resolved
+sudo resolvectl flush-caches
 
 # Limpar cache do pip
 echo "Limpando caches do pip..."
@@ -85,8 +85,8 @@ sudo pip3 cache purge
 
 # Adiciona novamente os pacotes multiverse e universe
 echo "Adicionando pacotes..."
-sudo add-apt-repository universe
 sudo add-apt-repository multiverse
+sudo add-apt-repository universe
 
 clear
 
