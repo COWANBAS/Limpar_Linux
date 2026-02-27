@@ -84,6 +84,11 @@ sudo resolvectl flush-caches
 echo "Limpando caches do pip..."
 sudo pip3 cache purge
 
+# Limpar lixeira
+echo "Limpando lixeira..."
+rm -rf ~/.local/share/Trash/files/*
+rm -rf ~/.local/share/Trash/info/*
+
 # Adiciona novamente os pacotes multiverse e universe
 echo "Adicionando pacotes..."
 sudo add-apt-repository multiverse
