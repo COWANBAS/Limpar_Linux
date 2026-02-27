@@ -65,6 +65,7 @@ echo "Limpando arquivos temporário do wine..."
 sudo rm -rf ~/.wine/drive_c/users/*/AppData/Roaming/Microsoft/Windows/Recent/*
 sudo rm -rf ~/.wine/drive_c/users/*/AppData/Local/Temp*
 sudo rm -rf ~/.wine/dosdevices/c:/windows/temp*
+sudo rm -rf ~/.wine/drive_c/users/*/Searches/*
 
 # Limpar arquivos de configuração e pacotes não utilizados
 echo "Removendo pacotes e configurações não utilizados..."
